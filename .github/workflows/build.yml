@@ -1,0 +1,16 @@
+name: 'build'
+on: # rebuild on master branch changes
+  push:
+    branches:
+      - master
+
+jobs:
+  build: # make sure build/ci work properly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get flutter version
+          id: get_flutter
+          uses: its404/flutter_github_action
+      - name: Output flutter version
+          run: echo ${{ steps.get_flutter.outputs.version }}
